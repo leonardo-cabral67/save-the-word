@@ -1,38 +1,32 @@
 module.exports = {
-  'parser': '@typescript-eslint/parser',
-  'env': {
-    'browser': true,
-    'es2021': true,
-    'node': true,
+  parser: '@typescript-eslint/parser',
+  env: {
+    browser: true,
+    es2021: true,
+    node: true,
   },
-  'extends': [
+  extends: [
     'eslint:recommended',
     'plugin:@typescript-eslint/recommended',
-    'plugin:react/recommended'
+    'plugin:react/recommended',
+    'prettier',
   ],
-  'overrides': [],
-  'parserOptions': {
-    'ecmaVersion': 'latest',
-    'sourceType': 'module'
+  overrides: [],
+  parserOptions: {
+    ecmaVersion: 'latest',
+    sourceType: 'module',
   },
-  'plugins': [
-    '@typescript-eslint',
-    'react'
-  ],
-  'rules': {
-    'no-console': ['error', {allow: ['error']}],
-    'indent': [
-      'error',
-      2
-    ],
-    'quotes': [
-      'error',
-      'single'
-    ],
-    'semi': [
-      'error',
-      'always'
-    ]
+  plugins: ['@typescript-eslint', 'react'],
+  settings: {
+    react: {
+      version: 'detect',
+    },
   },
-  'ignorePatterns': ['node_modules/'],
+  rules: {
+    'no-console': ['error', { allow: ['error'] }],
+    indent: ['error', 2],
+    quotes: ['error', 'single'],
+    semi: ['error', 'always'],
+  },
+  ignorePatterns: ['node_modules/'],
 };
