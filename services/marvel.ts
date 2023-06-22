@@ -16,7 +16,7 @@ export async function marvelAPI<T>(path: string): Promise<T> {
     `${baseUrl}${path}?apikey=${publicKey}&ts=${ts}&hash=${hash}`
   );
 
-  if (data.ok) {
+  if (!data.ok) {
     throw new Error('Could not get a response from api');
   }
 
