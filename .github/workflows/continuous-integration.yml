@@ -1,0 +1,21 @@
+name: 'Continuous Integration [CI]'
+
+on:
+  pull_request:
+    types: [synchronize, opened]
+
+env:
+  MARVEL_PUBLIC_KEY: ${{secrets.MARVEL_PUBLIC_KEY}}
+  MARVEL_SECRET_KEY: ${{secrets.MARVEL_SECRET_KEY}}
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Debug
+        run: ls -la
+      - name: Install dependencies
+        run: npm ci
+      - name: Lint fix
+        run: npm run lint:fix
