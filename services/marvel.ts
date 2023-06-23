@@ -6,14 +6,16 @@ const apiInfo = {
   secretKey: process.env.MARVEL_SECRET_KEY as string,
 };
 
-export async function marvelAPI<T>(path: string): Promise<T> {
+export async function marvelAPI<T>(path: string, param?: string): Promise<T> {
   const { baseUrl, publicKey, secretKey } = apiInfo;
 
   const ts = new Date().getTime();
   const hash = crypto.MD5(ts + secretKey + publicKey).toString();
 
   const data = await fetch(
-    `${baseUrl}${path}?apikey=${publicKey}&ts=${ts}&hash=${hash}`
+    `${baseUrl}${path}${
+      param ? `?${param}&` : '?'
+    }apikey=${publicKey}&ts=${ts}&hash=${hash}`
   );
 
   if (!data.ok) {
