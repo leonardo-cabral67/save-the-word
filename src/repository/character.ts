@@ -27,6 +27,6 @@ async function getCharacters(page: number): Promise<CharactersData> {
   return data;
 }
 
-export const herosRepository = {
+export const charactersRepository = {
   getCharacters,
 };
