@@ -2,8 +2,8 @@ import crypto from 'crypto-js';
 
 const apiInfo = {
   baseUrl: 'https://gateway.marvel.com',
-  publicKey: process.env.MARVEL_PUBLIC_KEY as string,
-  secretKey: process.env.MARVEL_SECRET_KEY as string,
+  publicKey: process.env.NEXT_PUBLIC_MARVEL_PUBLIC_KEY as string,
+  secretKey: process.env.NEXT_PUBLIC_MARVEL_SECRET_KEY as string,
 };
 
 export async function marvelAPI<T>(path: string, param?: string): Promise<T> {
