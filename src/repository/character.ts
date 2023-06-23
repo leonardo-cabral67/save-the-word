@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 import { marvelAPI } from '../../services/marvel';
 import { apiEndpoints } from './utils/apiEndpoints';
 
