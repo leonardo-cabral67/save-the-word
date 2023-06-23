@@ -18,10 +18,10 @@ interface CharactersData {
   };
 }
 
-async function getCharacters(page: number): Promise<CharactersData> {
+async function getCharacters(offset: number): Promise<CharactersData> {
   const data = await marvelAPI<CharactersData>(
     apiEndpoints.getHeros,
-    `limit=20&offset=${page}`
+    `limit=20&offset=${offset}`
   );
 
   return data;
