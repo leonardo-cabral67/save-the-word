@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import { marvelAPI } from '../../services/marvel';
 import { apiEndpoints } from './utils/apiEndpoints';
 
@@ -14,13 +15,17 @@ interface Character {
 interface CharactersData {
   data: {
     results: Array<Character>;
+    total: number;
   };
 }
 
-async function getCharacters(): Promise<Array<Character>> {
-  const { data } = await marvelAPI<CharactersData>(apiEndpoints.getHeros);
-  const results: Array<Character> = data.results;
-  return results;
+async function getCharacters(page: number): Promise<CharactersData> {
+  const data = await marvelAPI<CharactersData>(
+    apiEndpoints.getHeros,
+    `limit=20&offset=${page}`
+  );
+
+  return data;
 }
 
 export const herosRepository = {
