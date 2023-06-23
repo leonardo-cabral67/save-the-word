@@ -1,3 +1,3 @@
 export const apiEndpoints = {
-  getHeros: '/v1/public/characters'
+  getHeros: '/v1/public/characters',
 };
