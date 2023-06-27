@@ -16,6 +16,10 @@ module.exports = {
           3: '#7389E5',
         },
       },
+      fontFamily: {
+        inter: 'var(--font-inter)',
+        bangers: 'var(--font-bangers)',
+      },
     },
   },
   plugins: [],
