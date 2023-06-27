@@ -12,7 +12,7 @@ export default function CharacterCard({ character }: CharacterCardProps) {
       style={{ backgroundImage: `url(${image})` }}
       className="w-64 h-72 bg-no-repeat relative border-2
       shadow-white bg-cover rounded-sm hover:shadow-2xl
-      hover:shadow-white"
+      hover:shadow-white cursor-pointer"
     >
       <div
         className="absolute bottom-0 m-auto w-full h-20
