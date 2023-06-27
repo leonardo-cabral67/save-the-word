@@ -18,4 +18,4 @@ jobs:
       - name: Install dependencies
         run: yarn install --frozen-lockfile
       - name: Lint fix
-        run: npm run lint:fix
+        run: yarn lint:fix
