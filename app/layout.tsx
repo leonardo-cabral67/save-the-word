@@ -1,6 +1,7 @@
 import './globals.css';
 import { ReactNode } from 'react';
 import { Inter, Bangers } from 'next/font/google';
+import Header from '@ui/components/header';
 
 const InterFont = Inter({
   variable: '--font-inter',
@@ -21,6 +22,7 @@ export default function Layout({ children }: { children: ReactNode }) {
       className={`${InterFont.className} ${BangersFont.variable}`}
     >
       <body className="bg-gradient-to-b from-red-1 to-red-900 bg-no-repeat h-screen">
+        <Header />
         {children}
       </body>
     </html>
