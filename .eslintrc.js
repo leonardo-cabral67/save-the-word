@@ -30,6 +30,7 @@ module.exports = {
     semi: ['error', 'always'],
     'react/jsx-uses-react': 'off',
     'react/react-in-jsx-scope': 'off',
+    'max-len': ['error', { code: 90 }],
   },
   ignorePatterns: ['node_modules/'],
 };
