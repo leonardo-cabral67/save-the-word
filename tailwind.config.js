@@ -20,6 +20,12 @@ module.exports = {
         inter: 'var(--font-inter)',
         bangers: 'var(--font-bangers)',
       },
+      dropShadow: {
+        'choose-character': '4px 2px 2px #417fd4',
+      },
+      gridTemplateColumns: {
+        fluid: 'repeat(auto-fit, minmax(250px, 1fr))',
+      },
     },
   },
   plugins: [],
