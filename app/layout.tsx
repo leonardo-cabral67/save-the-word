@@ -21,7 +21,7 @@ export default function Layout({ children }: { children: ReactNode }) {
       lang="en-us"
       className={`${InterFont.className} ${BangersFont.variable}`}
     >
-      <body className="bg-gradient-to-b from-red-1 to-red-900 bg-no-repeat min-h-screen h-full">
+      <body className="min-h-screen h-full w-11/12 mx-auto bg-gradient-to-b from-red-1 to-red-900 bg-no-repeat">
         <Header />
         {children}
       </body>
