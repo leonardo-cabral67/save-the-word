@@ -15,18 +15,12 @@
     "skipLibCheck": true /* Skip type checking all .d.ts files. */,
     "baseUrl": "./",
     "paths": {
-      "@repository/*": [
-        "src/repository/*"
-      ],
-      "@controller/*": [
-        "src/controller/*"
-      ]
+      "@repository/*": ["src/repository/*"],
+      "@controller/*": ["src/controller/*"],
+      "@interfaces/*": ["src/interfaces/*"],
+      "@ui/*": ["src/ui/*"]
     },
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
+    "lib": ["dom", "dom.iterable", "esnext"],
     "noEmit": true,
     "incremental": true,
     "moduleResolution": "node",
@@ -38,12 +32,6 @@
       }
     ]
   },
-  "include": [
-    "**/*.ts",
-    "**/*.tsx",
-    ".next/types/**/*.ts"
-  ],
-  "exclude": [
-    "node_modules"
-  ]
+  "include": ["**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
+  "exclude": ["node_modules"]
 }
