@@ -8,6 +8,22 @@ async function getCharacters(page: number): Promise<CharactersData> {
   return response;
 }
 
+function filterCharacters<TypeCharacter>({
+  filterSearch,
+  characters,
+}: {
+  filterSearch: string;
+  characters: Array<TypeCharacter & { name: string }>;
+}): TypeCharacter[] {
+  return characters.filter((character) => {
+    const filterSearchNormalized = filterSearch.toLowerCase().trim();
+    const nameNormalized = character.name.toLowerCase().trim();
+    const results = nameNormalized.includes(filterSearchNormalized);
+    return results;
+  });
+}
+
 export const charactersController = {
   getCharacters,
+  filterCharacters,
 };
