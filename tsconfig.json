@@ -17,8 +17,7 @@
     "paths": {
       "@repository/*": ["src/repository/*"],
       "@controller/*": ["src/controller/*"],
-      "@interfaces/*": ["src/interfaces/*"],
-      "@ui/*": ["src/ui/*"]
+      "@interfaces/*": ["src/interfaces/*"]
     },
     "lib": ["dom", "dom.iterable", "esnext"],
     "noEmit": true,
