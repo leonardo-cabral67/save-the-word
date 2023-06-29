@@ -26,6 +26,13 @@ module.exports = {
       gridTemplateColumns: {
         fluid: 'repeat(auto-fit, minmax(250px, 1fr))',
       },
+      keyframes: {
+        blade: {
+          '100%': {
+            transform: 'translateX(115%)',
+          },
+        },
+      },
     },
   },
   plugins: [],
