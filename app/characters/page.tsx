@@ -27,6 +27,7 @@ export default function CharacterPage() {
   const [filter, setFilter] = useState<string>('');
   const [search, setSearch] = useState<string>('');
 
+
   const [onFilter, setOnFilter] = useState<boolean>(true);
 
   const searchForCharactersInfo = {
@@ -37,6 +38,13 @@ export default function CharacterPage() {
       completeSearch.current &&
       searchedCharacters.length !== 0 &&
       search.length > 0,
+  };
+
+  const screenShowCharactersArray = {
+    characters:
+      !searchForCharactersInfo.hasFound && !searchForCharactersInfo.typing,
+    searchedCharacters:
+      searchForCharactersInfo.hasFound && searchForCharactersInfo.typing,
   };
 
   const isLoading =
@@ -66,12 +74,6 @@ export default function CharacterPage() {
   }, []);
 
   useEffect(() => {
-    if (search.length === 0) {
-      setSearch('');
-      setSearchedCharacters([]);
-      completeSearch.current = true;
-    }
-
     if (search.length > 0) {
       completeSearch.current = false;
       charactersController
@@ -141,14 +143,12 @@ export default function CharacterPage() {
         </ul>
       )}
       <ul className="grid grid-cols-fluid gap-6 justify-items-center">
-        {searchForCharactersInfo.hasFound &&
-          searchForCharactersInfo.typing &&
+        {screenShowCharactersArray.searchedCharacters &&
           searchedCharacters.map((character) => (
             <CharacterCard key={character.id} character={character} />
           ))}
 
-        {!searchForCharactersInfo.hasFound &&
-          !searchForCharactersInfo.typing &&
+        {screenShowCharactersArray.characters &&
           filteredCharacters.map((character) => (
             <CharacterCard key={character.id} character={character} />
           ))}
