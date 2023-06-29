@@ -11,6 +11,16 @@ async function getCharacters(offset: number): Promise<CharactersData> {
   return data;
 }
 
+async function getCharacterByName(name: string): Promise<CharactersData> {
+  const data = await marvelAPI<CharactersData>(
+    apiEndpoints.getHeros,
+    `nameStartsWith=${name}`
+  );
+
+  return data;
+}
+
 export const charactersRepository = {
   getCharacters,
+  getCharacterByName,
 };
