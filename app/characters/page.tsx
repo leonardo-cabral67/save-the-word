@@ -7,6 +7,8 @@ import ToggleOption from './toggleOption';
 import Input from './input';
 import CharactersSkeletonLoader from './charactersSkeletonLoader';
 import ResultInfos from './resultsInfos';
+import PaginationButtons from './paginationButtons';
+import PreviousAndNext from './previousAndNext';
 
 interface Character {
   id: number;
@@ -24,9 +26,13 @@ export default function CharacterPage() {
   const [characters, setCharacters] = useState<Character[]>([]);
   const [searchedCharacters, setSearchedCharacters] = useState<Character[]>([]);
 
+  const [totalCharacters, setTotalCharacters] = useState<number>(0);
+  const [currentPage, setCurrentPage] = useState<number>(1);
+
   const [filter, setFilter] = useState<string>('');
   const [search, setSearch] = useState<string>('');
 
+  const totalPages = Math.ceil(totalCharacters / 20);
 
   const [onFilter, setOnFilter] = useState<boolean>(true);
 
@@ -40,13 +46,6 @@ export default function CharacterPage() {
       search.length > 0,
   };
 
-  const screenShowCharactersArray = {
-    characters:
-      !searchForCharactersInfo.hasFound && !searchForCharactersInfo.typing,
-    searchedCharacters:
-      searchForCharactersInfo.hasFound && searchForCharactersInfo.typing,
-  };
-
   const isLoading =
     characters.length === 0 || searchForCharactersInfo.searching;
 
@@ -55,6 +54,13 @@ export default function CharacterPage() {
     characters: characters,
   });
 
+  const screenShowCharactersArray = {
+    characters:
+      !searchForCharactersInfo.hasFound && !searchForCharactersInfo.typing,
+    searchedCharacters:
+      searchForCharactersInfo.hasFound && searchForCharactersInfo.typing,
+  };
+
   function toggleFilterOrSearch() {
     setSearch('');
     setFilter('');
@@ -62,16 +68,28 @@ export default function CharacterPage() {
     setOnFilter(!onFilter);
   }
 
+  async function updateCharacters(page: number) {
+    charactersController
+      .getCharacters(page)
+      .then(({ data }) => {
+        setTotalCharacters(data.total);
+        setCharacters(data.results);
+      })
+      .catch((error) => console.error(error));
+  }
+
+  const showPagination =
+    screenShowCharactersArray.characters && filteredCharacters.length > 0;
+
   useEffect(() => {
     if (!completeInitialLoad.current) {
-      charactersController
-        .getCharacters(1)
-        .then(({ data }) => {
-          setCharacters(data.results);
-        })
-        .catch((err) => console.error(err));
+      updateCharacters(1).finally(() => (completeInitialLoad.current = true));
     }
-  }, []);
+    if (completeInitialLoad.current) {
+      setCharacters([]);
+      updateCharacters(currentPage);
+    }
+  }, [currentPage]);
 
   useEffect(() => {
     if (search.length > 0) {
@@ -87,10 +105,10 @@ export default function CharacterPage() {
   }, [search]);
 
   return (
-    <section className="min-h-screen">
+    <section className="min-h-screen flex flex-col">
       <h2
         className="mb-12 text-center text-5xl text-white font-semibold
-        drop-shadow-choose-character font-bangers -tracking-tighter"
+				drop-shadow-choose-character font-bangers -tracking-tighter"
       >
         Please, Choose fast a character!
       </h2>
@@ -121,7 +139,6 @@ export default function CharacterPage() {
           />
         )}
       </section>
-
       {filter.length > 0 && (
         <ResultInfos<Character>
           searchType={filter}
@@ -136,7 +153,11 @@ export default function CharacterPage() {
           result={searchedCharacters}
         />
       )}
-
+      {screenShowCharactersArray.characters && filter.length === 0 && (
+        <h4 className="text-lg text-center text-white font-bangers  -mt-12 pb-4">
+          Total Pages: {totalPages}
+        </h4>
+      )}
       {isLoading && (
         <ul className="grid grid-cols-fluid gap-6 justify-items-center">
           <CharactersSkeletonLoader cards={20} />
@@ -153,6 +174,36 @@ export default function CharacterPage() {
             <CharacterCard key={character.id} character={character} />
           ))}
       </ul>
+
+      {showPagination && (
+        <div
+          className="flex flex-row items-center justify-center gap-4 mt-20 min-w-min
+        overflow-x-scroll md:overflow-hidden justify-self-end -mb-16"
+        >
+          <PreviousAndNext
+            isPrevious={true}
+            onClick={() => setCurrentPage(currentPage - 1)}
+            disabled={currentPage === 1}
+          />
+
+          <ul
+            className="flex flex-row items-center overflow-x-scroll md:overflow-hidden
+          gap-6 shrink-0"
+          >
+            <PaginationButtons
+              currentPage={currentPage}
+              length={3}
+              changePage={setCurrentPage}
+              totalPages={totalPages}
+            />
+          </ul>
+          <PreviousAndNext
+            isPrevious={false}
+            onClick={() => setCurrentPage(currentPage + 1)}
+            disabled={currentPage === totalPages}
+          />
+        </div>
+      )}
     </section>
   );
 }
