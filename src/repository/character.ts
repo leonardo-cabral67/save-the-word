@@ -20,7 +20,16 @@ async function getCharacterByName(name: string): Promise<CharactersData> {
   return data;
 }
 
+async function getCharacterById(id: string): Promise<CharactersData> {
+  const data = await marvelAPI<CharactersData>(
+    `${apiEndpoints.getHeros}/${id}`
+  );
+
+  return data;
+}
+
 export const charactersRepository = {
   getCharacters,
   getCharacterByName,
+  getCharacterById,
 };
