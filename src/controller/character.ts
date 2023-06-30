@@ -33,8 +33,14 @@ function filterCharacters<TypeCharacter>({
   });
 }
 
+async function getCharacterById(id: string) {
+  const response = await charactersRepository.getCharacterById(id);
+  return response;
+}
+
 export const charactersController = {
   getCharacters,
   filterCharacters,
   searchCharactersByName,
+  getCharacterById,
 };
