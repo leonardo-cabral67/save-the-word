@@ -14,9 +14,3 @@ export interface CharactersData {
     total: number;
   };
 }
-
-export interface DataCharacter {
-  data: {
-    results: Character;
-  };
-}
