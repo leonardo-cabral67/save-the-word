@@ -28,7 +28,7 @@ export default function CharacterPage() {
       <div className=""></div>
       <img src={image} className="w-72 mb-2" />
       <DescriptionCamp
-        title="Title"
+        title="Name"
         description={characterInfo?.name as string}
       />
       <DescriptionCamp
