@@ -8,9 +8,9 @@ export default function DescriptionCamp({
   description,
 }: DescriptionCampProps) {
   return (
-    <div className="w-full flex items-center justify-around">
+    <div className="w-full flex flex-col items-center justify-around">
       <h2 className="text-4xl text-white font-bangers">{title}:</h2>
-      <p className="text-lg text-white">{description}</p>
+      <p className="text-sm text-white">{description}</p>
     </div>
   );
 }
