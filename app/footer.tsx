@@ -2,9 +2,15 @@ export default function Footer() {
   return (
     <footer
       className="w-full border-t
-      mt-12 border-white mx-auto shrink-0 py-4"
+      mt-12 border-white mx-auto shrink-0 py-4 text-center"
     >
-      <h4 className="text-white text-sm text-center font-light mx-auto">
+      <a
+        className="text-sm text-white italic"
+        href="https://developer.marvel.com/"
+      >
+        Data provided by Marvel. © 2023 MARVEL
+      </a>
+      <h4 className="text-white text-xs font-light mx-auto">
         Developed by{' '}
         <a
           className="underline"
