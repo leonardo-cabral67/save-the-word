@@ -1,7 +1,6 @@
 import './globals.css';
 import { ReactNode } from 'react';
 import { Inter, Bangers } from 'next/font/google';
-import Header from './header';
 import Footer from './footer';
 
 const InterFont = Inter({
