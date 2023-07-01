@@ -29,10 +29,7 @@ export default function Layout({ children }: { children: ReactNode }) {
         mx-auto bg-gradient-to-b
        from-red-1 to-red-900 bg-no-repeat"
       >
-        <Header />
-        <main className="w-11/12 mx-auto mb-8 flex-grow flex-shrink-0 basis-auto">
-          {children}
-        </main>
+        {children}
         <Footer />
       </body>
     </html>
