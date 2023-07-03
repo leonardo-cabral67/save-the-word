@@ -14,9 +14,10 @@ export default function HomePage() {
           <h2>
             When you were born, you got the power to become anyone you want ...
           </h2>
-          <h2>now the world is on dangerous.</h2>
+          <h2>now the world is in danger.</h2>
           <h2>
-            You need choose a character and become him. Then you save the world
+            You need to choose a character and become him. Then you save the
+            world
           </h2>
           <h2>YOU HAVE TO DO IT NOW!!!</h2>
           <Link href="/characters">
