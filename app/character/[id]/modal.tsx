@@ -8,10 +8,10 @@ export default function Modal({ isOpen, closeModal }: ModalProps) {
     isOpen && (
       <div
         className="absolute top-24 h-72 w-80 sm:w-96 bg-blue-900 font-bangers
-      shadow-lg shadow-red-3"
+      shadow-lg shadow-red-3 rounded"
       >
         <button
-          className="cursor-pointer text-2xl pl-2 mb-4"
+          className="cursor-pointer text-2xl pl-2 mb-4 text-red-400 hover:text-red-600"
           onClick={closeModal}
         >
           X
