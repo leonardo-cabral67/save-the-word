@@ -2,6 +2,7 @@
 
 ## summary 
 - [About](#about)
+- [Design of this application](#design-of-this-application)
 - [Commit messages](#commit-messages)
 - [Main technologies](#main-technologies)
 - [Install and run this project](#install-and-run-this-project)
@@ -11,6 +12,11 @@
 
 ### About 
   In this application you were born with the ability to become anyone you want. Now The world is in danger and you need to become a Marvel character and save the world! 
+
+---
+
+### Design of this application
+The Desgin of this application was made  by me on Figma. click [here](https://www.figma.com/file/aKzVehlGetXY0y5npNAdAu/Marvel-front-end?type=design&node-id=89%3A2&mode=design&t=PYZQCN4ox9WR0lo0-1) to access. 
 
 ---
 
