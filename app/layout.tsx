@@ -21,6 +21,9 @@ export default function Layout({ children }: { children: ReactNode }) {
       lang="en-us"
       className={`${InterFont.className} ${BangersFont.variable} min-h-screen`}
     >
+      <head>
+        <link rel="icon" href="/icon.png" />
+      </head>
       <body
         className="
         flex flex-col
